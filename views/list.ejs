@@ -1,0 +1,43 @@
+<%- include('header'); -%>
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-#A683E3 p-4">
+    <form class="d-flex" action="/newList" method="post">
+      <input type="text" name="new" value="" placeholder="Add New List" autocomplete="off" >
+      <button class="btn btn-outline-dark " type="submit" name="newButton">+</button>
+    </form>
+  </div>
+</div>
+<nav class="navbar navbar-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+    <div class="box" id="heading">
+      <h1><%= ListTitle %> </h1>
+    </div>
+
+    <div class="box">
+    <% newListItems.forEach(function(item){ %>
+      <form id="myform" action="/delete" method="post">
+        <div class="item">
+          <input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()">
+        <p> <%= item.name %> </p>
+        <input type="hidden" name="listTitle" value="<%= ListTitle %>" >
+          </div>
+      </form>
+
+    <%  }) %>
+
+      <form action="/" method="post">
+        <input type="text" name="newItem" value="" placeholder="New item" autocomplete="off">
+        <button class="w2" type="submit" name="submit" value="<%= ListTitle %>" >+</button>
+      </form>
+    </div>
+    <!-- <div class="x">
+
+    </div> -->
+
+<%- include('footer'); -%>
