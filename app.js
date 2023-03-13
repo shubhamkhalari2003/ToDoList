@@ -17,8 +17,8 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb+srv://shubham2003:india123@cluster0.3zof2tz.mongodb.net/todoListDB", {useNewUrlParser : true});
-
+// mongoose.connect("mongodb+srv://shubham2003:india123@cluster0.3zof2tz.mongodb.net/todoListDB", {useNewUrlParser : true});
+mongoose.connect("mongodb://localhost:27017/todoListDB", {useNewUrlParser : true});
 const itemSchema = new mongoose.Schema({
   name : String
 });
